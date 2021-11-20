@@ -59,6 +59,12 @@ def string_to_tree_node(input_str):
     return root
 
 
+# 三步法
+# 初始设置：cur指向root; while条件: cur不为空，或者栈不为空
+# 1.一直往左走（同时做操作），同时cur跟着走，直到cur指向空
+# 2.取出栈顶节点top
+# 3.cur指向top.right
+
 def pre_order(root):
     stack = []
     cur = root
@@ -72,7 +78,11 @@ def pre_order(root):
         cur = stack.pop()
         cur = cur.right
 
-
+# 三步法
+# 初始设置：cur指向root; while条件: cur不为空，或者栈不为空
+# 1.一直往左走，同时cur跟着走，直到cur指向空
+# 2.取出栈顶节点top，做操作
+# 3.cur指向top.right
 def in_order(root):
     stack = []
     cur = root
@@ -86,7 +96,11 @@ def in_order(root):
         print(cur.val)
         cur = cur.right
 
-
+# 三步法
+# 初始设置：cur指向root; while条件: cur不为空，或者栈不为空。再加一个prev，计算上次操作的数
+# 1.一直往左走，同时cur跟着走，直到cur指向空
+# 2.获取栈顶节点top，做判断
+# 3.如果top.right不为空，且上次没操作它，则cur指向top.right；否则，操作top，更新prev，并取出top
 def post_order(root):
     stack = []
     cur = root
